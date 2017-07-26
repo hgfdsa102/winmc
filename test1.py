@@ -40,8 +40,8 @@ def main(lines, globalDelay, loop) :
             line = lines.split(' ')
             if(line[0].startswith('m')) :
                 # Mouse Event
-                testList = RandomGuess(line[1], line[2], 2)
-                MouseClick(line[1], line[2])
+                testList = RandomGuess(line[1], line[2], 20)
+                MouseClick(testList[0], testList[1])
             elif(line[0].startswith('k')) :
                 # Keyboard Event
                 KeyboardClick(line[1])
@@ -51,7 +51,9 @@ def main(lines, globalDelay, loop) :
             Delay(globalDelay)
             if loop != -1 : loop -= 1
 
-main("m 10 10", 0, 10)
+
+Delay(1000)
+main("m 400 500", 50, 500)
 
 
 # if(len(sys.argv) == 2) :
