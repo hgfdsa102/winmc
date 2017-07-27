@@ -9,6 +9,7 @@ class RandGuass:
         self.mu = 0.0
         self.sigma = 1.0
 
+
     def RandomGuessPos(self, xpos, ypos, scale):
         scale = float(scale)
         x_pos = float(xpos)
@@ -22,13 +23,15 @@ class RandGuass:
         posRandomGuess.append(int(round(ran_y + y_pos)))
         return posRandomGuess
 
+
     def RandomGuessDelay(self, msec, scale):
         scale = float(scale)
         msec = float(msec)
         ranSec = random.gauss(0.0, 1.0)
         ranSecSclae = (scale * ranSec)
-        Delay(int(round(ranSecSclae + msec)))
+        self.Delay(int(round(ranSecSclae + msec)))
 
-        def Delay(self, sec):
-            msec = float(sec) / 1000
-            time.sleep(msec)
+
+    def Delay(self, sec):
+        msec = float(sec) / 1000
+        time.sleep(msec)

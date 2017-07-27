@@ -2,6 +2,7 @@ import sys
 import time
 import win32api
 import win32con
+import win32gui
 import random
 import lib.RandGen
 
@@ -63,11 +64,13 @@ def main(lines, globalDelay, loop):
 
 
 Delay(1000)
-main("m 400 500", 50, 1)
+main("m 400 500", 50, 0)
 
 testclass = lib.RandGen.RandGuass()
 
 ary = testclass.RandomGuessPos(30, 30, 1)
+
+print(testclass.RandomGuessDelay(1000, 10))
 
 Delay(1000)
 # if(len(sys.argv) == 2) :
