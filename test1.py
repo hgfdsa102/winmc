@@ -3,7 +3,7 @@ import time
 import win32api
 import win32con
 import random
-
+import lib.RandGen
 
 def RandomGuessPos(xpos, ypos, scale):
     scale = float(scale)
@@ -63,9 +63,13 @@ def main(lines, globalDelay, loop):
 
 
 Delay(1000)
-main("m 400 500", 50, 500)
+main("m 400 500", 50, 1)
 
+testclass = lib.RandGen.RandGuass()
 
+ary = testclass.RandomGuessPos(30, 30, 1)
+
+Delay(1000)
 # if(len(sys.argv) == 2) :
 #     f = open(sys.argv[1], 'r')
 #     lines = f.readlines()
