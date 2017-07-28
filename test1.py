@@ -64,16 +64,6 @@ def main(lines, globalDelay, loop):
         if loop != -1 : loop -= 1
 
 
-# main("m 400 500", 50, 0)
-testclass = lib.RandGen.RandGuass(0.0, 1.0)
-ary = testclass.RandomGuessPos(30, 30, 1)
-
-# for i in range(1000):
-    # print(testclass.RandomGuessPos(30, 30, 5))
-    # MouseClick(testclass.RandomGuessPos(400, 500, 50))
-
-Delay(1000)
-
 def WindowExists(windowname):
     try:
         notehwnd = win32gui.FindWindow(None, windowname)
@@ -88,8 +78,15 @@ def WindowExists(windowname):
             return True
 
 
-if WindowExists('제목 없음 - 메모장'):
+if WindowExists('[MOMO]앱플레이어'):
     print("Program is running")
+    # main("m 400 500", 50, 0)
+    testclass = lib.RandGen.RandGuass(0.0, 1.0)
+    ary = testclass.RandomGuessPos(30, 30, 1)
+
+    for i in range(1):
+        # print(testclass.RandomGuessPos(30, 30, 5))
+        MouseClick(testclass.RandomGuessPos(713, 410, 10))
 
     time.sleep(10)
 else:
