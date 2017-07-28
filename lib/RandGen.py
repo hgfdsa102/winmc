@@ -1,13 +1,11 @@
 import time
-import win32api
-import win32con
 import random
 
 
 class RandGuass:
-    def __init__(self):
-        self.mu = 0.0
-        self.sigma = 1.0
+    def __init__(self, mu, sigma):
+        self.mu = mu
+        self.sigma = sigma
 
 
     def RandomGuessPos(self, xpos, ypos, scale):
@@ -15,10 +13,10 @@ class RandGuass:
         x_pos = float(xpos)
         y_pos = float(ypos)
         posRandomGuess = []
-        ranXVar = random.gauss(0.0, 1.0)
+        ranXVar = random.gauss(self.mu, self.sigma)
         ran_x = (scale * ranXVar)
         posRandomGuess.append(int(round(ran_x + x_pos)))
-        ranYVar = random.gauss(0.0, 1.0)
+        ranYVar = random.gauss(self.mu, self.sigma)
         ran_y = (scale * ranYVar)
         posRandomGuess.append(int(round(ran_y + y_pos)))
         return posRandomGuess
@@ -27,7 +25,7 @@ class RandGuass:
     def RandomGuessDelay(self, msec, scale):
         scale = float(scale)
         msec = float(msec)
-        ranSec = random.gauss(0.0, 1.0)
+        ranSec = random.gauss(self.mu, self.sigma)
         ranSecSclae = (scale * ranSec)
         self.Delay(int(round(ranSecSclae + msec)))
 

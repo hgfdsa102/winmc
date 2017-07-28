@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 import sys
 import time
 import win32api
@@ -28,9 +29,9 @@ def RandomGuessDelay(msec, scale):
     Delay(int(round(ranSecSclae+msec)))
 
 
-def MouseClick(x, y):
-    x = int(x)
-    y = int(y)
+def MouseClick(pos):
+    x = int(pos[0])
+    y = int(pos[1])
     win32api.SetCursorPos((x, y))
     win32api.mouse_event(win32con.MOUSEEVENTF_LEFTDOWN, x, y, 0, 0)
     win32api.mouse_event(win32con.MOUSEEVENTF_LEFTUP, x, y, 0, 0)
@@ -63,16 +64,39 @@ def main(lines, globalDelay, loop):
         if loop != -1 : loop -= 1
 
 
-Delay(1000)
-main("m 400 500", 50, 0)
-
-testclass = lib.RandGen.RandGuass()
-
+# main("m 400 500", 50, 0)
+testclass = lib.RandGen.RandGuass(0.0, 1.0)
 ary = testclass.RandomGuessPos(30, 30, 1)
 
-print(testclass.RandomGuessDelay(1000, 10))
+# for i in range(1000):
+    # print(testclass.RandomGuessPos(30, 30, 5))
+    # MouseClick(testclass.RandomGuessPos(400, 500, 50))
 
 Delay(1000)
+
+def WindowExists(windowname):
+    try:
+        notehwnd = win32gui.FindWindow(None, windowname)
+        print('handle', notehwnd)
+    except win32gui.error:
+        return False
+    else:
+        if notehwnd == 0:
+            return False
+        else:
+            win32gui.SetForegroundWindow(notehwnd)  # 활성화
+            return True
+
+
+if WindowExists('제목 없음 - 메모장'):
+    print("Program is running")
+
+    time.sleep(10)
+else:
+    print("Program is not running")
+    time.sleep(10)
+
+
 # if(len(sys.argv) == 2) :
 #     f = open(sys.argv[1], 'r')
 #     lines = f.readlines()
